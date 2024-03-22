@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Navigation Bar */
+.nav-wrapper {
+    background-color: #007bff;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative; /* Adjusted for absolute positioning of nav-mobile */
+}
+
+.nav-wrapper ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-wrapper ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+}
+
+.nav-wrapper ul li a:hover,
+.nav-wrapper ul li a.active {
+    background-color: #0056b3;
+}
+
+.hamburger {
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: none; /* Initially hidden on larger screens */
+}
+
+/* Mobile menu hidden/active styles */
+.hidden {
+    display: none;
+}
+
+#nav-wrapper.active .hamburger {
+    display: none; /* Hide hamburger when menu is active */
+}
+
+#nav-wrapper.active #nav-mobile {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    top: 50px; /* Adjust based on your nav bar's height */
+    width: 100%;
+    background-color: #007bff;
+}
+
+#nav-mobile li a {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Checkout and Login Buttons */
+.checkout-btn, .login-btn {
+    color: #fff;
+    font-size: 24px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0 5px;
+    margin-left: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-btn {
+    margin-left: 0px; /* Adjusted margin between icons for closer appearance */
+}
+
+.checkout-btn:hover, .login-btn:hover {
+    color: #ddd;
+}
+
+/* Search Form Styling */
+.search-form {
+    display: flex;
+    align-items: center;
+    margin: 0 10px; /* Adjust spacing around the search form */
+}
+
+.search-form input[type="search"] {
+    padding: 5px 10px;
+    font-size: 16px; /* Adjust as needed */
+    border: 1px solid #ddd;
+    border-radius: 5px; /* Optional: rounds the corners */
+}
+
+.search-form button {
+    padding: 5px 10px;
+    margin-left: 5px; /* Space between input field and button */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px; /* Optional: matches input field's border-radius */
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Flexbox Layout for Products */
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    width: calc(25% - 20px); /* Adjusted to fit 4 in a row */
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    transition: transform .2s;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Mobile First Design */
+@media (max-width: 768px) {
+    .product-card {
+        width: calc(100% - 40px); /* Adjust for smaller screens */
+    }
+
+    .nav-wrapper ul, .nav-wrapper .hamburger {
+        flex-direction: column;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-wrapper ul li a {
+        text-align: center;
+    }
+
+    .nav-wrapper ul {
+        display: none;
+ 
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+    background-color: #f8f9fa; /* Light background color */
+}
+
+.login-form {
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Maximum width of the form */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Space between form fields */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px; /* Space below the label */
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Rounded corners for input fields */
+}
+
+.login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Primary button color */
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px; /* Larger font size */
+}
+
+.login-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
