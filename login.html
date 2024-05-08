@@ -8,24 +8,86 @@
 </head>
 <body>
     <div class="login-container">
-        <div class="login-form">
-            <h1>Login</h1>
-            <form id="loginForm">
+        <div class="login-form" id="loginForm">
+            <h1 style="text-align: center;">Login</h1s>
+            <form onsubmit="return verifyLogin()">
                 <div class="form-group">
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" required>
                 </div>
-
                 <div class="form-group">
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required>
                 </div>
-
                 <button type="submit" class="login-button">Login</button>
+                <button type="button" onclick="showRegisterForm()" class="toggle-button">Register</button>
+            </form>
+        </div>
+        <div class="registration-form" id="registrationForm" style="display: none;">
+            <h1 style="text-align: center;">Register</h1s>
+            <form onsubmit="return registerUser()">
+                <div class="form-group">
+                    <label for="newUsername">Username:</label>
+                    <input type="text" id="newUsername" name="newUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">Password:</label>
+                    <input type="password" id="newPassword" name="newPassword" required>
+                </div>
+                <button type="submit" class="register-button">Register</button>
+                <button type="button" onclick="showLoginForm()" class="toggle-button">Back to Login</button>
             </form>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        function verifyLogin() {
+            event.preventDefault();
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Check credentials
+            var storedData = localStorage.getItem(username);
+            if (storedData) {
+                var userData = JSON.parse(storedData);
+                if (userData.password === password) {
+                    window.location.href = 'index.html'; // Successful login
+                    return true;
+                } else {
+                    alert('Invalid password. Please try again.');
+                    return false;
+                }
+            } else {
+                alert('Username not found. Please register.');
+                return false;
+            }
+        }
+
+        function registerUser() {
+            event.preventDefault();
+            var username = document.getElementById('newUsername').value;
+            var password = document.getElementById('newPassword').value;
+
+            if (localStorage.getItem(username)) {
+                alert('Username already exists. Please use a different username.');
+                return false;
+            }
+
+            localStorage.setItem(username, JSON.stringify({username: username, password: password}));
+            alert('Registration successful. You can now log in.');
+            return true;
+        }
+
+        function showRegisterForm() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registrationForm').style.display = 'block';
+        }
+
+        function showLoginForm() {
+            document.getElementById('registrationForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+        }
+    </script>
+
 </body>
 </html>

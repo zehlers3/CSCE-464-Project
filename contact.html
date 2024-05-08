@@ -7,20 +7,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <div class="nav-wrapper" id="nav-wrapper">
+    <div class="nav-wrapper" id="nav-wrapper">
         <button class="hamburger" id="hamburger">&#9776;</button>
         <ul id="nav-mobile" class="hidden">
             <li><a href="index.html">Home</a></li>
             <li><a href="products.html">Products</a></li>
             <li class="active"><a href="contact.html">Feedback</a></li>
+            <li><a href="previous-orders.html">Previous Orders</a></li>
         </ul>
-         <a href="checkout.html" class="checkout-btn">&#128722;</a>
-	 <a href="login.html" class="login-btn">&#128100;</a>
+        <a href="checkout.html" class="checkout-btn">&#128722;</a>
+        <a href="login.html" class="login-btn">&#128100;</a>
     </div>
 
-    <div class="container">        
+    <div class="container">
         <div class="feedback-section">
-            <h2>I would Love Your Feedback!</h2>
+            <h2 style="text-align: center;">Website Feedback</h2s>
             <p>Please fill out the form below to leave us a rating and your thoughts about my website.</p>
             <form id="feedback-form">
                 <div class="form-group">
@@ -46,6 +47,13 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        document.getElementById('feedback-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting through the HTTP post method
+            var form = this;
+            alert('Thank you for your feedback!'); // Show thank you message
+            form.reset(); // Clear the form
+        });
+    </script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+/* Global styles */
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +12,7 @@ body {
     line-height: 1.6;
 }
 
-/* Navigation Bar */
+/* Navigation bar styles */
 .nav-wrapper {
     background-color: #007bff;
     color: #fff;
@@ -19,25 +20,36 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    position: relative; /* Adjusted for absolute positioning of nav-mobile */
+    position: relative;
+}
+
+.nav-wrapper ul,
+.dropdown-content {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    background-color: #007bff;
+    width: 100%;
 }
 
 .nav-wrapper ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
+    display: none; /* Initially hidden, shown via JavaScript or on larger screens */
+    flex-direction: column;
+    top: 100%; /* Position directly below the nav bar */
 }
 
-.nav-wrapper ul li a {
+.nav-wrapper ul li a,
+.dropdown-content a {
     color: #fff;
+    padding: 10px;
     text-decoration: none;
-    padding: 10px 15px;
     display: block;
 }
 
 .nav-wrapper ul li a:hover,
-.nav-wrapper ul li a.active {
+.nav-wrapper ul li a.active,
+.dropdown-content a:hover {
     background-color: #0056b3;
 }
 
@@ -47,84 +59,48 @@ body {
     border: none;
     color: #fff;
     cursor: pointer;
-    display: none; /* Initially hidden on larger screens */
+    display: block; /* Always display hamburger icon */
 }
 
-/* Mobile menu hidden/active styles */
-.hidden {
-    display: none;
+/* Dropdown and search styles */
+.category-dropdown,
+.search-container {
+    display: inline-block;
+    position: relative;
 }
 
-#nav-wrapper.active .hamburger {
-    display: none; /* Hide hamburger when menu is active */
-}
-
-#nav-wrapper.active #nav-mobile {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    left: 0;
-    top: 50px; /* Adjust based on your nav bar's height */
-    width: 100%;
+.dropbtn,
+.search-container button {
     background-color: #007bff;
-}
-
-#nav-mobile li a {
-    padding: 10px;
-    text-align: left;
-}
-
-/* Checkout and Login Buttons */
-.checkout-btn, .login-btn {
     color: #fff;
-    font-size: 24px;
-    background-color: transparent;
+    padding: 10px;
+    font-size: 16px;
     border: none;
     cursor: pointer;
-    padding: 0 5px;
-    margin-left: 5px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 5px;
 }
 
-.login-btn {
-    margin-left: 0px; /* Adjusted margin between icons for closer appearance */
+.dropdown-content {
+    display: none; /* Hidden until hovered */
+    z-index: 1;
 }
 
-.checkout-btn:hover, .login-btn:hover {
-    color: #ddd;
+.category-dropdown:hover .dropdown-content,
+.search-container button:hover {
+    display: block;
+    background-color: #0056b3;
 }
 
-/* Search Form Styling */
-.search-form {
-    display: flex;
-    align-items: center;
-    margin: 0 10px; /* Adjust spacing around the search form */
-}
-
-.search-form input[type="search"] {
-    padding: 5px 10px;
-    font-size: 16px; /* Adjust as needed */
+/* Search form adjustments */
+#product-search,
+.search-container button {
+    padding: 8px 10px;
     border: 1px solid #ddd;
-    border-radius: 5px; /* Optional: rounds the corners */
+    border-radius: 5px;
+    width: auto; /* Allows flexibility in form size */
 }
 
-.search-form button {
-    padding: 5px 10px;
-    margin-left: 5px; /* Space between input field and button */
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px; /* Optional: matches input field's border-radius */
-    cursor: pointer;
-}
-
-.search-form button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-}
-
-/* Flexbox Layout for Products */
+/* Product layout styles */
 .products {
     display: flex;
     flex-wrap: wrap;
@@ -137,7 +113,7 @@ body {
     background-color: #fff;
     border: 1px solid #ddd;
     padding: 20px;
-    width: calc(25% - 20px); /* Adjusted to fit 4 in a row */
+    width: calc(25% - 20px);
     box-shadow: 0 2px 5px rgba(0,0,0,.1);
     transition: transform .2s;
 }
@@ -150,80 +126,23 @@ body {
     max-width: 100%;
     height: auto;
 }
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
 
-/* Mobile First Design */
-@media (max-width: 768px) {
-    .product-card {
-        width: calc(100% - 40px); /* Adjust for smaller screens */
-    }
-
-    .nav-wrapper ul, .nav-wrapper .hamburger {
-        flex-direction: column;
+/* Responsive adjustments for all screens */
+@media (min-width: 768px) {
+    .nav-wrapper ul {
+        display: flex; /* Show navigation as flex */
+        flex-direction: row; /* Align items in a row */
+        position: static; /* Remove absolute positioning */
+        width: auto; /* Auto width */
     }
 
     .hamburger {
-        display: block;
+        display: none; /* Hide the hamburger icon on larger screens */
     }
-
-    .nav-wrapper ul li a {
-        text-align: center;
-    }
-
-    .nav-wrapper ul {
-        display: none;
- 
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Full height of the viewport */
-    background-color: #f8f9fa; /* Light background color */
-}
-
-.login-form {
-    padding: 40px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px; /* Maximum width of the form */
-}
-
-.form-group {
-    margin-bottom: 20px; /* Space between form fields */
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px; /* Space below the label */
-}
-
-.form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px; /* Rounded corners for input fields */
-}
-
-.login-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff; /* Primary button color */
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px; /* Larger font size */
-}
-
-.login-button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-    margin-top: 20px;
 }

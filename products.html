@@ -7,101 +7,104 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <div class="nav-wrapper" id="nav-wrapper">
-    <button class="hamburger" id="hamburger">&#9776;</button>
-    <ul id="nav-mobile" class="hidden">
-        <li><a href="index.html">Home</a></li>
-        <li class="active"><a href="products.html">Products</a></li>
-        <li><a href="contact.html">Feedback</a></li>
-    </ul>
-    <input type="text" id="product-search" placeholder="Search products...">
-    <a href="checkout.html" class="checkout-btn">&#128722;</a>
-    <a href="login.html" class="login-btn">&#128100;</a>
-</div>
-
-    
-    <div class="container">
-        <h1>Products</h1>
+    <div class="nav-wrapper" id="nav-wrapper">
+        <div class="category-dropdown">
+            <button class="dropbtn" onclick="toggleDropdown()">Categories</button>
+            <div class="dropdown-content" id="dropdown-content">
+               <a href="#" onclick="filterCategory('fruit'); return false;">Fruits</a>
+               <a href="#" onclick="filterCategory('vegetables'); return false;">Vegetables</a>
+               <a href="#" onclick="filterCategory('snacks'); return false;">Snacks</a>
+            </div>
+        </div>
+        <ul id="nav-mobile" class="hidden">
+            <li><a href="index.html">Home</a></li>
+            <li class="active"><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Feedback</a></li>
+            <li><a href="previous-orders.html">Previous Orders</a></li>
+        </ul>
+        <input type="text" id="product-search" placeholder="Search products..." onkeyup="filterProducts()">
+        <a href="checkout.html" class="checkout-btn">&#128722;</a>
+        <a href="login.html" class="login-btn">&#128100;</a>
+    </div>    <div class="container">
+        <h1 style="text-align: center;">Products</h1>
         <div id="product-list" class="products">
             <!-- Apples -->
-            <div class="product-card">
+            <div class="product-card" data-category="fruit">
                 <img src="https://th.bing.com/th/id/OIP.0J8vp14KBWyidr-5doBUCgHaHa?w=201&h=201&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Apples">
                 <h2>Apples</h2>
                 <p>$3.99</p>
                 <button onclick="addToCart('Apples', 3.99)">Add to Cart</button>
             </div>
             <!-- Bananas -->
-            <div class="product-card">
+            <div class="product-card" data-category="fruit">
                 <img src="https://th.bing.com/th/id/OIP.2OOMDQIAmesjaBzPXcfHbAHaGu?w=191&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Bananas">
                 <h2>Bananas</h2>
                 <p>$0.99</p>
                 <button onclick="addToCart('Bananas', 0.99)">Add to Cart</button>
             </div>
             <!-- Oranges -->
-            <div class="product-card">
+            <div class="product-card" data-category="fruit">
                 <img src="https://th.bing.com/th/id/OIP.CFeGeZpZ_ahBhQ6w_zKYUAHaFj?w=260&h=195&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Oranges">
                 <h2>Oranges</h2>
                 <p>$4.99</p>
                 <button onclick="addToCart('Oranges', 4.99)">Add to Cart</button>
             </div>
             <!-- Black Berries -->
-            <div class="product-card">
+            <div class="product-card" data-category="fruit">
                 <img src="https://th.bing.com/th/id/OIP.P6ZWxMYB38d_Y3S25DLM6gHaFj?w=273&h=205&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Oranges">
                 <h2>Black Berries</h2>
                 <p>$5.99</p>
                 <button onclick="addToCart('Black Berries', 5.99)">Add to Cart</button>
 	    </div>
             <!-- Carrots -->
-            <div class="product-card">
+            <div class="product-card" data-category="vegetables">
                 <img src="https://th.bing.com/th/id/OIP.jBnmUAwfk9tEc2v2ZlfZlgHaHa?w=190&h=190&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Oranges">
                 <h2>Carrots</h2>
                 <p>$3.49</p>
                 <button onclick="addToCart('Carrots', 3.49)">Add to Cart</button>
 	    </div>
             <!-- Broccli -->
-            <div class="product-card">
+            <div class="product-card" data-category="vegetables">
                 <img src="https://th.bing.com/th/id/OIP.PqBuI37DpmTd1vErFt6I4QHaEo?w=290&h=181&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Oranges">
                 <h2>Broccli</h2>
                 <p>$3.99</p>
                 <button onclick="addToCart('Broccli', 3.99)">Add to Cart</button>
 	    </div>
             <!-- Onions -->
-            <div class="product-card">
+            <div class="product-card" data-category="vegetables">
                 <img src="https://th.bing.com/th/id/OIP.YjOGS5y6au84-RR2mdeCMwHaFH?w=286&h=197&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Oranges">
                 <h2>Onions</h2>
                 <p>$1.99</p>
                 <button onclick="addToCart('Onions', 1.99)">Add to Cart</button>
             </div>
-            <!-- Bell Peppers -->
-            <div class="product-card">
+            <div class="product-card" data-category="vegetables">
                 <img src="https://th.bing.com/th/id/OIP.iKKOYUvcgZGOKZnCNK2EAwHaE8?w=293&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Oranges">
                 <h2>Bell Peppers</h2>
                 <p>$4.19</p>
                 <button onclick="addToCart('Bell Peppers', 4.19)">Add to Cart</button>
             </div>
-            <!-- Doritos -->
-            <div class="product-card">
+            <div class="product-card" data-category="snacks">
                 <img src="https://th.bing.com/th/id/OIP.tBUd-sn61mpLzxTjn9SJWQHaKw?w=138&h=200&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Oranges">
                 <h2>Doritos</h2>
                 <p>$4.49</p>
                 <button onclick="addToCart('Doritos', 4.49)">Add to Cart</button>
             </div>
             <!-- Tortilla Chips -->
-            <div class="product-card">
+            <div class="product-card" data-category="snacks">
                 <img src="https://th.bing.com/th/id/OIP.cabaD8KPj2H0nBNwIxShpgAAAA?w=209&h=210&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Oranges">
                 <h2>Tortilla Chips</h2>
                 <p>$2.99</p>
                 <button onclick="addToCart('Tortilla Chips', 2.99)">Add to Cart</button>
             </div>
             <!-- Jolly Ranchers -->
-            <div class="product-card">
+            <div class="product-card" data-category="snacks">
                 <img src="https://th.bing.com/th/id/OIP.2KHYKkzKN3RekPNkgIsVmwHaHj?w=180&h=184&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Oranges">
                 <h2>Jolly Ranchers</h2>
                 <p>$2.49</p>
                 <button onclick="addToCart('Jolly Ranchers', 2.49)">Add to Cart</button>
             </div>
             <!-- Starburst -->
-            <div class="product-card">
+            <div class="product-card" data-category="snacks">
                 <img src="https://th.bing.com/th/id/OIP.K7VKNwqk6-75U16D6DmBpgHaHa?w=192&h=192&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Oranges">
                 <h2>Starburst</h2>
                 <p>$2.19</p>
