@@ -102,6 +102,13 @@ function filterProducts() {
     });
 }
 
+function clearCart() {
+    localStorage.setItem('cart', JSON.stringify([]));
+    
+    alert("Your cart has been cleared!");
+    displayCart();  // Refresh the cart display to show it's empty
+}
+
 // Function to toggle the visibility of the navigation menu
 function toggleNavigationMenu() {
     var navMenu = document.getElementById('nav-mobile');
